@@ -15,8 +15,9 @@ class Display():
     def __str__(self):
         return f"Display {self.identification}: {self.message}."
 
-    def methods(self):
-        pass
+    def update(self, data):
+        for key, value in data.items():
+            print(f"{key}: {value}")
 
 display = Display(1, "Perth", "Welcome")
 print(display)
