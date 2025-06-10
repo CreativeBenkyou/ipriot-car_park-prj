@@ -1,7 +1,6 @@
 from display import Display
 from sensors import Sensors
 
-
 class CarPark():
     def __init__(self, location, capacity, weather, plates = None, sensors = None, displays = None, temp_plates = None):
         """
@@ -15,10 +14,10 @@ class CarPark():
         self.location = location
         self.capacity = capacity
         self.weather = weather
-        self.plates = plates
-        self.sensors = sensors
-        self.displays = displays
-        self.temp_plates = temp_plates
+        self.plates = plates or []
+        self.sensors = sensors or []
+        self.displays = displays or []
+        self.temp_plates = temp_plates or []
 
     def __str__(self):
         return f"This is the {self.location} Car Park, there are {self.capacity} bays available."
@@ -26,14 +25,14 @@ class CarPark():
     @property
     def available_bays(self):
         """
-        THis function figures out the amount of available bays in the car park, it also returns 0 if there are extra cars in the car park than there are total bays.
+        This function figures out the amount of available bays in the car park, it also returns 0 if there are extra cars in the car park than there are total bays.
         :return:
         """
         available_bays_number = self.capacity - len(self.plates)
         if available_bays_number >= 0:
-            return 0
-        else:
             return available_bays_number
+        else:
+            return 0
 
     def update_displays(self):
         """
@@ -41,7 +40,7 @@ class CarPark():
         :return:
         """
         data = {
-            "available_bays": self.available_bays(),
+            "available_bays": self.available_bays,
             "temperature": self.weather,
         }
         for display in self.displays:
@@ -67,6 +66,7 @@ class CarPark():
         Removes a licence plate of a car as it exits the car park, updates the displays.
         :return:
         """
+        # TO DO: What if plates aren't there?
         if plate in self.plates:
             self.plates.remove(plate)
         else:
@@ -77,15 +77,15 @@ class CarPark():
         """
         This function will register the sensors and the displays.
         """
-        if not issubclass(component, Sensors):
+        if not isinstance(component, (Sensors, Display)):
             raise TypeError("Object needs to be from Sensors or a Display.")
-        if issubclass(component, Sensors):
+        if isinstance(component, Sensors):
             self.sensors.append(component)
-        elif issubclass(component, Display):
+        elif isinstance(component, Display):
             self.displays.append(component)
 
-perth = CarPark("Perth", 100, 10)
-print(perth)
+#perth = CarPark("Perth", 100, 10)
+#print(perth)
 
-print(perth.plates)
-print(perth.temp_plates)
+#print(perth.plates)
+#print(perth.temp_plates)
