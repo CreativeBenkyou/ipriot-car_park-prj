@@ -25,22 +25,19 @@ class CarPark():
 
     @property
     def available_bays(self):
+        """
+        THis function figures out the amount of available bays in the car park, it also returns 0 if there are extra cars in the car park than there are total bays.
+        :return:
+        """
         available_bays_number = self.capacity - len(self.plates)
         if available_bays_number >= 0:
             return 0
         else:
             return available_bays_number
 
-
-    def register(self):
-        """
-        This function will register the sensors and the displays
-        """
-        pass
-
     def update_displays(self):
         """
-        Finds the correct display to update and updates the display
+        Finds the correct display to update and updates the display.
         :return:
         """
         data = {
@@ -52,14 +49,14 @@ class CarPark():
 
     def check_car(self):
         """
-        Checks a licence plate of a car as it enters the car park to see if it's already in the car park, updates the displays
+        Checks a licence plate of a car as it enters the car park to see if it's already in the car park, updates the displays.
         :return:
         """
         pass
 
     def add_car(self, plate):
         """
-        Records a licence plate of a car as it enters the car park, updates the displays
+        Records a licence plate of a car as it enters the car park, updates the displays.
         :return:
         """
         self.plates.append(plate)
@@ -67,7 +64,7 @@ class CarPark():
 
     def remove_car(self, plate):
         """
-        Removes a licence plate of a car as it exits the car park, updates the displays
+        Removes a licence plate of a car as it exits the car park, updates the displays.
         :return:
         """
         if plate in self.plates:
@@ -77,6 +74,9 @@ class CarPark():
         self.update_displays()
 
     def register(self, component):
+        """
+        This function will register the sensors and the displays.
+        """
         if not issubclass(component, Sensors):
             raise TypeError("Object needs to be from Sensors or a Display.")
         if issubclass(component, Sensors):
