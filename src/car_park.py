@@ -86,3 +86,6 @@ class CarPark():
 
 perth = CarPark("Perth", 100, 10)
 print(perth)
+
+print(perth.plates)
+print(perth.temp_plates)

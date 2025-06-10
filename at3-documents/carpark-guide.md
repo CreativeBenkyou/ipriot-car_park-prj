@@ -454,17 +454,18 @@ Answer the following questions:
 >
 > 1. **Which class is responsible for each of the following pieces of information (and why)?**
 >    - _The number of available bays_
->      `Answer here...`
+>      `CarPark is the class responsible for the number of available bays because the information is stored in the dictionary, which was made in update_displays(), called data{}.
+>    - This dictionary; data{} then calls the available_bays() method which is also in CarPark, this method uses the capacity attribute from the CarPark class. `
 >    - _The current temperature_
->      `Answer here...`
+>      `The temperature is the same as above, it is found in the data{} dictionary in CarPark, which draws information from the weather attribute in CarPark and is set when called/a new CarPark object is made at the moment.`
 >    - _The time_
->      `Answer here...`
+>      `The time has not been set yet, but can easily be added to the same data{} dictionary and called upon in the same way weather is, in the CarPark class. This could be found by importing the time in-built module.`
 >
 > 2. **What is the difference between an attribute and a property?**
->    `Answer here...`
+>    `A property is a decorator; @property, just as @abstract is a decorator. The difference between an attribute and a property is that the attribute is not called, but used as data, while the @property method needs to be called the run the code inside the function to get data. The two are very similar except that the @property can have lots of code inside the method, like iteration and conditionals. `
 >
 > 3. **Why do you think we used a dictionary to hold the data we passed the display? List at least one advantage and one disadvantage of this approach.**
->    `Answer here...`
+>    `With dictionaries there are tuples stored inside, instead of a list, so it can be harder to manipulate data inside. The fact you can use a key to search for a value can be handy though, instead of searching by index in a list, as you know the key word you need to find. The key and value pair make an item, so this can be great when you need to access two pieces of related data `
 
 #### Add a detect vehicle method to the Sensor class
 
