@@ -5,7 +5,7 @@ import string
 class Sensors(ABC):
     def __init__(self, car_park, display_id: str, is_active: bool):
         """
-        This function is the initialiser for the Sensors class.
+        The initialiser for the Sensors class.
         :param display_id:
         :param is_active:
         :param car_park:
@@ -20,7 +20,7 @@ class Sensors(ABC):
     @abstractmethod
     def update_car_park(self, plate):
         """
-        The function is an abstract method to enable the child class to modify it.
+        An abstract method enabling the child class to modify it.
         :param plate:
         :return:
         """
@@ -28,7 +28,7 @@ class Sensors(ABC):
 
     def generate_random_plate(self):
         """
-        This function is used to make random plate numbers for checking if the car park is working properly.
+        Make random plate numbers for checking if the car park is working properly.
         :return:
         """
         random_plate_numbers = format(random.randint(0, 999), '03d')
@@ -39,7 +39,7 @@ class Sensors(ABC):
 
     def _scan_plate(self):
         """
-        This function should scan the car's licence plate as they pass the sensor, but is not implemented yet. Instead, it will return the random plate.
+        Scan the car's licence plate as they pass the sensor, but is not implemented yet. Instead, it will return the random plate.
         :return:
         """
         return self.generate_random_plate()

@@ -1,0 +1,15 @@
+Car ABC 100exited
+Car ABC 001exited
+Car AB 1exited
+Car ABC 100exited
+Car ABC 001exited
+Car AB 1exited
+Car ABC 100exited
+Car ABC 001exited
+Car AB 1exited
+Car ABC 100exited
+Car ABC 001exited
+Car ABC 100exited
+Car ABC 001exited
+Car ABC 100exited
+Car ABC 001exited

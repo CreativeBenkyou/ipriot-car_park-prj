@@ -1,7 +1,7 @@
 class Display():
     def __init__(self, display_id, car_park, message ="", is_on = False):
         """
-        This function is the initialiser for the Display class.
+        The initialiser for the Display class.
         :param display_id:
         :param message:
         :param is_on:
@@ -17,10 +17,12 @@ class Display():
 
     def update(self, data, delay=0.5):
         """
-        This function will iterate through the displays to print what's in the data, printed as an item.
+        Iterate through the displays to print what's in the data, printed as an item.
         :param data:
         :return:
         """
+        if 'message' in data:
+            self.message = data['message']
         for key, value in data.items():
             print(f"Key: {key}, Value: {value}")
 

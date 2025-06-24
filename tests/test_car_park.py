@@ -1,11 +1,18 @@
 import unittest
 from car_park import CarPark
+from sensors import EntrySensor
+from display import Display
+
+from pathlib import Path
+
+log_file = Path("log.txt")
 
 class TestCarPark(unittest.TestCase):
-    def setUp(self)):
-        self.car_park = CarPark("Perth", 25)
+    def setUp(self):
+        self.car_park = CarPark("Perth", 100, 25)
 
     def test_car_park_initialised_with_all_attributes(self):
+        self.assertEqual(self.car_park.log_file, log_file)
         self.assertIsInstance(self.car_park, CarPark)
         self.assertEqual(self.car_park.location, "Perth")
         self.assertEqual(self.car_park.capacity, 100)
@@ -39,6 +46,13 @@ class TestCarPark(unittest.TestCase):
     def test_removing_a_car_that_does_not_exist(self):
         with self.assertRaises(ValueError):
             self.car_park.remove_car("AB 1")
+
+    def test_log_file_created(self):
+        new_carpark = CarPark('Perth', 100, 25, log_file="new_log.txt")
+        self.assertTrue(Path("new_log.txt").exists())
+
+    def tearDown(self):
+        Path("new_log.txt").unlink(missing_ok=True)
 
 
 if __name__ == "__main__":
