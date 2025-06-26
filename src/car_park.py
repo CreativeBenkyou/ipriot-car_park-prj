@@ -1,3 +1,5 @@
+from operator import truediv
+
 from display import Display
 from sensors import Sensors
 
@@ -51,12 +53,15 @@ class CarPark():
         for display in self.displays:
             display.update(data)
 
-    def check_car(self):
+    def check_car(self, plate):
         """
         Checks a licence plate of a car as it enters the car park to see if it's already in the car park, updates the displays.
         :return:
         """
-        raise ValueError('Car can not be removed, the car is not currently in the car park.')
+        if plate in self.plates:
+            return True
+        else:
+            raise ValueError('Car can not be removed, the car is not currently in the car park.')
 
     def add_car(self, plate):
         """
@@ -75,7 +80,7 @@ class CarPark():
         if plate in self.plates:
             self.plates.remove(plate)
         else:
-            self.check_car()
+            self.check_car(plate)
         self.update_displays()
         self._log_car(plate, entry=False)
         #remove a car that doesn't exist, check car_park.py to see if it cares whether or not a car can get removed if it doesn't exist (unittest error)

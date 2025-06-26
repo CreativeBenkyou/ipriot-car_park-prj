@@ -1,15 +1,15 @@
 class Display():
-    def __init__(self, display_id, car_park, message ="", is_on = False):
+    def __init__(self, display_id, car_park, message ="", is_active = False):
         """
         The initialiser for the Display class.
         :param display_id:
         :param message:
-        :param is_on:
+        :param is_active:
         :param car_park:
         """
         self.display_id = display_id
         self.message = message
-        self.is_on = is_on
+        self.is_on = is_active
         self.car_park = car_park
 
     def __str__(self):
