@@ -47,13 +47,18 @@ class TestCarPark(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.car_park.remove_car("AB 1")
 
+    def test_register_raises_type_error(self):
+        test_string = 'Not a Sensor or Display'
+        car_park = CarPark('Perth', 100, 25)
+        with self.assertRaises(TypeError):
+            self.car_park.register(test_string)
+
     def test_log_file_created(self):
         new_carpark = CarPark('Perth', 100, 25, log_file="new_log.txt")
         self.assertTrue(Path("new_log.txt").exists())
 
     def tearDown(self):
         Path("new_log.txt").unlink(missing_ok=True)
-
 
 if __name__ == "__main__":
     unittest.main()
