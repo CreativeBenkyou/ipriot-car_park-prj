@@ -70,6 +70,7 @@ class CarPark():
         """
         self.plates.append(plate)
         self.update_displays()
+        self._log_car(plate, entry=True)
 
     def remove_car(self, plate):
         """
@@ -101,9 +102,3 @@ class CarPark():
         time = format(datetime.now(), "%Y-%m-%d %H:%M:%S")
         with self.log_file.open(mode='a', encoding='utf8') as f:
             f.write(f"Car {plate}{'entered' if entry else 'exited'}\n")
-
-#perth = CarPark("Perth", 100, 10)
-#print(perth)
-
-#print(perth.plates)
-#print(perth.temp_plates)
