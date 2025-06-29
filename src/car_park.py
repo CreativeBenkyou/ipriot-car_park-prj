@@ -6,6 +6,8 @@ from sensors import Sensors
 from pathlib import Path
 from datetime import datetime
 
+import json
+
 class CarPark():
     def __init__(self, location, capacity, weather, plates = None, sensors = None, displays = None, temp_plates = None, log_file=Path("log.txt")):
         """
@@ -102,3 +104,17 @@ class CarPark():
         time = format(datetime.now(), "%Y-%m-%d %H:%M:%S")
         with self.log_file.open(mode='a', encoding='utf8') as f:
             f.write(f"Car {plate}{'entered' if entry else 'exited'}\n")
+
+    def write_config(self):
+        with open("config.json", "w") as f:
+        # TODO: use self.config_file; use Path; add optional parm to __init__
+            json.dump({"location": self.location,
+                       "capacity": self.capacity,
+                       "log_file": str(self.log_file)}, f)
+
+    @classmethod
+    def from_config(cls, config_file=Path("config.json")):
+        config_file = config_file if isinstance(config_file, Path) else Path(config_file)
+        with config_file.open() as f:
+            config = json.load(f)
+        return cls(config["location"], config["capacity"], log_file=config["log_file"])
