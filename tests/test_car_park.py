@@ -53,9 +53,9 @@ class TestCarPark(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.car_park.register(test_string)
 
+    @classmethod
     def test_car_logged_when_entering(self):
         new_carpark = CarPark("Perth", 100, 25, log_file="log.txt")
-        # TODO: change this to use a class attribute or new instance variable
         self.car_park.add_car("NEW 001")
         with self.car_park.log_file.open() as f:
             last_line = f.readlines()[-1]
@@ -63,9 +63,9 @@ class TestCarPark(unittest.TestCase):
         self.assertIn("entered", last_line)  # check description
         self.assertIn("\n", last_line)  # check entry has a new line
 
+    @classmethod
     def test_car_logged_when_exiting(self):
         new_carpark = CarPark("Perth", 100, 25, log_file="log.txt")
-        # TODO: change this to use a class attribute or new instance variable
         self.car_park.add_car("NEW 001")
         self.car_park.remove_car("NEW 001")
         with self.car_park.log_file.open() as f:

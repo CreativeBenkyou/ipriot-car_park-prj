@@ -25,6 +25,3 @@ class Display():
             self.message = data['message']
         for key, value in data.items():
             print(f"Key: {key}, Value: {value}")
-
-#display = Display(1, "Perth", "Welcome")
-#print(display)

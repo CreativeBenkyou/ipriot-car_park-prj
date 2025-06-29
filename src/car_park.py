@@ -103,18 +103,14 @@ class CarPark():
     def _log_car(self, plate:str, entry = True):
         time = format(datetime.now(), "%Y-%m-%d %H:%M:%S")
         with self.log_file.open(mode='a', encoding='utf8') as f:
-            f.write(f"Car {plate}{'entered' if entry else 'exited'}\n")
+            f.write(f"Car {plate}{' entered' if entry else ' exited'}\n")
 
     def write_config(self):
         with open("config.json", "w") as f:
-        # TODO: use self.config_file; use Path; add optional parm to __init__
             json.dump({"location": self.location,
                        "capacity": self.capacity,
                        "log_file": str(self.log_file)}, f)
 
-    @classmethod
-    def from_config(cls, config_file=Path("config.json")):
-        config_file = config_file if isinstance(config_file, Path) else Path(config_file)
-        with config_file.open() as f:
-            config = json.load(f)
-        return cls(config["location"], config["capacity"], log_file=config["log_file"])
+    def read_log_file(self):
+        with self.log_file.open(mode='r', encoding='utf8') as f:
+            print(f.read())

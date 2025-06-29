@@ -92,6 +92,3 @@ class ExitSensor(Sensors):
         """
         self.car_park.remove_car(plate)
         print(f'Car passed through Exit with plate: {plate}.')
-
-#exit_sensor = ExitSensor("Perth", "Exit", True)
-#print(exit_sensor)
